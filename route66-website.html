@@ -1,0 +1,679 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Route 66 - 友達との最高の旅</title>
+    <style>
+        :root {
+            --primary-color: #e63946;
+            --secondary-color: #457b9d;
+            --background-color: #f1faee;
+            --text-color: #1d3557;
+            --accent-color: #a8dadc;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: var(--background-color);
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+        
+        header {
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://cdnjs.cloudflare.com/ajax/libs/simple-icons/3.0.1/simple-icons.svg') center/cover no-repeat;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            position: relative;
+            background-attachment: fixed;
+        }
+        
+        .hero-content {
+            max-width: 800px;
+            padding: 0 20px;
+        }
+        
+        header h1 {
+            font-size: 4rem;
+            margin-bottom: 20px;
+            letter-spacing: 2px;
+        }
+        
+        header p {
+            font-size: 1.5rem;
+            margin-bottom: 30px;
+        }
+        
+        .btn {
+            display: inline-block;
+            background-color: var(--primary-color);
+            color: white;
+            padding: 12px 30px;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+            transition: background-color 0.3s, transform 0.3s;
+            margin: 10px;
+        }
+        
+        .btn:hover {
+            background-color: #c1121f;
+            transform: translateY(-3px);
+        }
+        
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 5%;
+            z-index: 1000;
+            transition: background-color 0.3s;
+        }
+        
+        nav.scrolled {
+            background-color: rgba(29, 53, 87, 0.95);
+        }
+        
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: white;
+            text-decoration: none;
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+        
+        .nav-links li {
+            margin-left: 30px;
+        }
+        
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        .nav-links a:hover {
+            color: var(--accent-color);
+        }
+        
+        .burger {
+            display: none;
+            cursor: pointer;
+        }
+        
+        .burger div {
+            width: 25px;
+            height: 3px;
+            background-color: white;
+            margin: 5px;
+            transition: all 0.3s ease;
+        }
+        
+        section {
+            padding: 80px 10%;
+        }
+        
+        section h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 50px;
+        }
+        
+        .section-heading {
+            position: relative;
+            display: inline-block;
+        }
+        
+        .section-heading::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 70px;
+            height: 4px;
+            background-color: var(--primary-color);
+        }
+        
+        .about-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+        
+        .about-text {
+            flex: 1;
+            min-width: 300px;
+            padding-right: 30px;
+        }
+        
+        .about-image {
+            flex: 1;
+            min-width: 300px;
+            height: 400px;
+            background: url('/api/placeholder/600/400') center/cover no-repeat;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .highlights {
+            background-color: var(--text-color);
+            color: white;
+        }
+        
+        .highlights-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .highlight-card {
+            background-color: rgba(255, 255, 255, 0.1);
+            padding: 30px;
+            border-radius: 10px;
+            transition: transform 0.3s;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+        
+        .highlight-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .highlight-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: var(--accent-color);
+        }
+        
+        .itinerary {
+            background-color: var(--accent-color);
+        }
+        
+        .timeline {
+            position: relative;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .timeline::after {
+            content: '';
+            position: absolute;
+            width: 6px;
+            background-color: var(--text-color);
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            margin-left: -3px;
+        }
+        
+        .timeline-item {
+            padding: 10px 40px;
+            position: relative;
+            width: 50%;
+            box-sizing: border-box;
+        }
+        
+        .timeline-item::after {
+            content: '';
+            position: absolute;
+            width: 25px;
+            height: 25px;
+            background-color: var(--primary-color);
+            border-radius: 50%;
+            top: 15px;
+            z-index: 1;
+        }
+        
+        .left {
+            left: 0;
+        }
+        
+        .right {
+            left: 50%;
+        }
+        
+        .left::after {
+            right: -12.5px;
+        }
+        
+        .right::after {
+            left: -12.5px;
+        }
+        
+        .timeline-content {
+            padding: 20px;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .timeline-content h3 {
+            color: var(--primary-color);
+            margin-bottom: 10px;
+        }
+        
+        .gallery {
+            background-color: white;
+        }
+        
+        .gallery-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 20px;
+        }
+        
+        .gallery-item {
+            height: 250px;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s;
+        }
+        
+        .gallery-item:hover {
+            transform: scale(1.05);
+        }
+        
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        #map {
+            height: 500px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .contact {
+            background-color: var(--secondary-color);
+            color: white;
+        }
+        
+        .contact-form {
+            max-width: 600px;
+            margin: 0 auto;
+            background-color: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+            color: var(--text-color);
+        }
+        
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 1rem;
+        }
+        
+        .form-group textarea {
+            height: 150px;
+            resize: vertical;
+        }
+        
+        .submit-btn {
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 12px 30px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1rem;
+            font-weight: bold;
+            transition: background-color 0.3s;
+        }
+        
+        .submit-btn:hover {
+            background-color: #c1121f;
+        }
+        
+        footer {
+            background-color: var(--text-color);
+            color: white;
+            text-align: center;
+            padding: 20px;
+        }
+        
+        .social-icons {
+            margin: 20px 0;
+        }
+        
+        .social-icons a {
+            color: white;
+            margin: 0 10px;
+            font-size: 1.5rem;
+            transition: color 0.3s;
+        }
+        
+        .social-icons a:hover {
+            color: var(--accent-color);
+        }
+        
+        @media screen and (max-width: 768px) {
+            header h1 {
+                font-size: 3rem;
+            }
+            
+            header p {
+                font-size: 1.2rem;
+            }
+            
+            .nav-links {
+                position: absolute;
+                right: 0;
+                height: 92vh;
+                top: 8vh;
+                background-color: var(--text-color);
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                width: 50%;
+                transform: translateX(100%);
+                transition: transform 0.5s ease-in;
+                padding-top: 50px;
+            }
+            
+            .nav-links li {
+                margin: 20px 0;
+            }
+            
+            .burger {
+                display: block;
+            }
+            
+            .nav-active {
+                transform: translateX(0%);
+            }
+            
+            .about-content {
+                flex-direction: column;
+            }
+            
+            .about-text {
+                margin-bottom: 30px;
+                padding-right: 0;
+            }
+            
+            .timeline::after {
+                left: 31px;
+            }
+            
+            .timeline-item {
+                width: 100%;
+                padding-left: 70px;
+                padding-right: 25px;
+            }
+            
+            .timeline-item::after {
+                left: 18px;
+            }
+            
+            .right {
+                left: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- ナビゲーション -->
+    <nav id="navbar">
+        <a href="#" class="logo">Route 66</a>
+        <ul class="nav-links">
+            <li><a href="#about">旅について</a></li>
+            <li><a href="#highlights">見どころ</a></li>
+            <li><a href="#itinerary">旅程</a></li>
+            <li><a href="#gallery">ギャラリー</a></li>
+            <li><a href="#map">地図</a></li>
+            <li><a href="#contact">お問い合わせ</a></li>
+        </ul>
+        <div class="burger">
+            <div class="line1"></div>
+            <div class="line2"></div>
+            <div class="line3"></div>
+        </div>
+    </nav>
+
+    <!-- ヒーローセクション -->
+    <header>
+        <div class="hero-content">
+            <h1>Route 66で最高の旅を</h1>
+            <p>アメリカを横断する伝説のハイウェイで、忘れられない思い出を作りましょう</p>
+            <a href="#itinerary" class="btn">旅程を見る</a>
+            <a href="#contact" class="btn">一緒に計画する</a>
+        </div>
+    </header>
+
+    <!-- 旅について -->
+    <section id="about">
+        <h2><span class="section-heading">Route 66の旅</span></h2>
+        <div class="about-content">
+            <div class="about-text">
+                <p>Route 66は、シカゴからロサンゼルスまで続く3,940kmの歴史的なハイウェイです。「マザーロード」や「アメリカのメインストリート」とも呼ばれ、アメリカの文化と歴史を体験できる素晴らしい旅路です。</p>
+                <p>この旅では、古き良きアメリカを感じられるダイナーや、独特なロードサイドアトラクション、壮大な自然景観、そして忘れられない出会いが待っています。友達と一緒に、アメリカの心臓部を横断する素晴らしい冒険に出かけましょう。</p>
+                <p>当サイトでは、Route 66を最大限に楽しむための情報やおすすめスポット、実用的なヒントを提供しています。あなたの最高の旅のお手伝いをします！</p>
+            </div>
+            <div class="about-image"></div>
+        </div>
+    </section>
+
+    <!-- 見どころ -->
+    <section id="highlights" class="highlights">
+        <h2><span class="section-heading">見どころ</span></h2>
+        <div class="highlights-container">
+            <div class="highlight-card">
+                <h3>クラシックなダイナー</h3>
+                <p>Route 66沿いには、50年代スタイルのダイナーが点在しています。華やかなネオンサイン、ジュークボックス、そして本格的なアメリカンフードを楽しめます。特に、オクラホマの「Rock Cafe」やミズーリの「Ted Drewes Frozen Custard」は必見です。</p>
+            </div>
+            <div class="highlight-card">
+                <h3>ユニークなアトラクション</h3>
+                <p>道中には、斜めに立つキャデラック、巨大なクジラ、地下の青い洞窟など、Instagram映えする奇妙で魅力的なアトラクションがたくさんあります。特に、テキサスの「Cadillac Ranch」やアリゾナの「Wigwam Motel」は忘れられない体験になるでしょう。</p>
+            </div>
+            <div class="highlight-card">
+                <h3>自然の驚異</h3>
+                <p>旅の途中では、グランドキャニオンやペインテッドデザート、ミーティア・クレーターなど、息を呑むような自然の景観を楽しむことができます。特に、アリゾナとニューメキシコの砂漠地帯の夕日は、一生の思い出になるでしょう。</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- 旅程 -->
+    <section id="itinerary" class="itinerary">
+        <h2><span class="section-heading">旅程</span></h2>
+        <div class="timeline">
+            <div class="timeline-item left">
+                <div class="timeline-content">
+                    <h3>1日目・2日目: シカゴ - スプリングフィールド</h3>
+                    <p>シカゴでRoute 66の始まりのサインを見た後、イリノイ州を南下します。「Funk's Grove」でメープルシロップを購入したり、「Cozy Dog Drive In」で有名なコーンドッグを食べたりしながら、スプリングフィールドまで進みます。</p>
+                </div>
+            </div>
+            <div class="timeline-item right">
+                <div class="timeline-content">
+                    <h3>3日目・4日目: セントルイス - タルサ</h3>
+                    <p>ミズーリ州のセントルイスでは、Gateway Archに登り、Ted Drewesの凍ったカスタードを味わいます。その後、カンザス州の小さな区間を通り、オクラホマ州のタルサへと向かいます。</p>
+                </div>
+            </div>
+            <div class="timeline-item left">
+                <div class="timeline-content">
+                    <h3>5日目・6日目: アマリロ - アルバカーキ</h3>
+                    <p>テキサス州のアマリロでは、Big Texanステーキハウスで巨大ステーキに挑戦し、Cadillac Ranchで芸術作品を鑑賞します。ニューメキシコ州に入り、サンタフェとアルバカーキを探索します。</p>
+                </div>
+            </div>
+            <div class="timeline-item right">
+                <div class="timeline-content">
+                    <h3>7日目・8日目: フラッグスタッフ - ラスベガス</h3>
+                    <p>アリゾナ州では、ペインテッドデザートとグランドキャニオンを訪れます。フラッグスタッフで一泊した後、ネバダ州のラスベガスへ寄り道して、エンターテイメントの都市を楽しみます。</p>
+                </div>
+            </div>
+            <div class="timeline-item left">
+                <div class="timeline-content">
+                    <h3>9日目・10日目: ロサンゼルス</h3>
+                    <p>最後にカリフォルニア州に入り、サンタモニカピアでRoute 66の終点に到着します。ロサンゼルスでは、ビーチでリラックスしたり、ハリウッドを観光したりして旅を締めくくります。</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ギャラリー -->
+    <section id="gallery" class="gallery">
+        <h2><span class="section-heading">旅の風景</span></h2>
+        <div class="gallery-container">
+            <div class="gallery-item">
+                <img src="/api/placeholder/400/400" alt="Route 66 サイン">
+            </div>
+            <div class="gallery-item">
+                <img src="/api/placeholder/400/400" alt="クラシックダイナー">
+            </div>
+            <div class="gallery-item">
+                <img src="/api/placeholder/400/400" alt="キャデラックランチ">
+            </div>
+            <div class="gallery-item">
+                <img src="/api/placeholder/400/400" alt="グランドキャニオン">
+            </div>
+            <div class="gallery-item">
+                <img src="/api/placeholder/400/400" alt="砂漠の夕日">
+            </div>
+            <div class="gallery-item">
+                <img src="/api/placeholder/400/400" alt="サンタモニカピア">
+            </div>
+        </div>
+    </section>
+
+    <!-- 地図 -->
+    <section id="map">
+        <h2><span class="section-heading">Route 66 地図</span></h2>
+        <div id="map"></div>
+    </section>
+
+    <!-- お問い合わせ -->
+    <section id="contact" class="contact">
+        <h2><span class="section-heading">一緒に計画しましょう</span></h2>
+        <div class="contact-form">
+            <form id="planForm">
+                <div class="form-group">
+                    <label for="name">お名前</label>
+                    <input type="text" id="name" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">メールアドレス</label>
+                    <input type="email" id="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="travelDate">旅行予定日</label>
+                    <input type="date" id="travelDate">
+                </div>
+                <div class="form-group">
+                    <label for="message">メッセージ</label>
+                    <textarea id="message" placeholder="質問や要望をお聞かせください"></textarea>
+                </div>
+                <button type="submit" class="submit-btn">送信する</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- フッター -->
+    <footer>
+        <div class="social-icons">
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-facebook"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="#"><i class="fab fa-youtube"></i></a>
+        </div>
+        <p>&copy; 2025 Route 66の旅. All Rights Reserved.</p>
+    </footer>
+
+    <script>
+        // ナビゲーションのスクロール効果
+        window.addEventListener('scroll', () => {
+            const navbar = document.getElementById('navbar');
+            if (window.scrollY > 100) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        // モバイルナビゲーションのトグル
+        const burger = document.querySelector('.burger');
+        const nav = document.querySelector('.nav-links');
+        
+        burger.addEventListener('click', () => {
+            nav.classList.toggle('nav-active');
+            
+            // バーガーアニメーション
+            burger.classList.toggle('toggle');
+        });
+        
+        // スムーススクロール
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                
+                window.scrollTo({
+                    top: targetElement.offsetTop - 70,
+                    behavior: 'smooth'
+                });
+                
+                // モバイルナビゲーションを閉じる
+                if (nav.classList.contains('nav-active')) {
+                    nav.classList.remove('nav-active');
+                    burger.classList.remove('toggle');
+                }
+            });
+        });
+        
+        // フォーム送信処理
+        document.getElementById('planForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('お問い合わせありがとうございます！すぐにご連絡いたします。');
+            this.reset();
+        });
+        
+        // 地図の初期化（実際にはここにGoogle MapsのAPIコードを入れます）
+        function initMap() {
+            // ここに地図の初期化コードが入ります
+            console.log('地図を初期化しました');
+        }
+        
+        // 地図のモックアップ（実際のプロジェクトではGoogle Maps APIを使用します）
+        const mapDiv = document.getElementById('map');
+        mapDiv.innerHTML = '<div style="width:100%;height:100%;display:flex;align-items:center;justify-content:center;background-color:#eee;"><p style="font-size:1.5rem;color:#666;">ここにRoute 66の地図が表示されます</p></div>';
+    </script>
+</body>
+</html>
