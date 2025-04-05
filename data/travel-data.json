@@ -1,0 +1,348 @@
+{
+  "stops": [
+    {
+      "id": 1,
+      "date": "2025-06-01",
+      "location": "Chicago",
+      "state": "IL",
+      "coordinates": {
+        "lat": 41.8781,
+        "lng": -87.6298
+      },
+      "distanceToNext": 182,
+      "highlights": "Starting point of Route 66 at Adams St & Michigan Ave",
+      "status": "completed"
+    },
+    {
+      "id": 2,
+      "date": "2025-06-02",
+      "location": "Springfield",
+      "state": "IL",
+      "coordinates": {
+        "lat": 39.7817,
+        "lng": -89.6501
+      },
+      "distanceToNext": 210,
+      "highlights": "Lincoln's Tomb, State Capitol",
+      "status": "completed"
+    },
+    {
+      "id": 3,
+      "date": "2025-06-04",
+      "location": "St. Louis",
+      "state": "MO",
+      "coordinates": {
+        "lat": 38.627,
+        "lng": -90.1994
+      },
+      "distanceToNext": 240,
+      "highlights": "Gateway Arch, Ted Drewes Frozen Custard",
+      "status": "completed"
+    },
+    {
+      "id": 4,
+      "date": "2025-06-06",
+      "location": "Springfield",
+      "state": "MO",
+      "coordinates": {
+        "lat": 37.209,
+        "lng": -93.2923
+      },
+      "distanceToNext": 180,
+      "highlights": "Fantastic Caverns, Route 66 Car Museum",
+      "status": "completed"
+    },
+    {
+      "id": 5,
+      "date": "2025-06-08",
+      "location": "Tulsa",
+      "state": "OK",
+      "coordinates": {
+        "lat": 36.154,
+        "lng": -95.9928
+      },
+      "distanceToNext": 107,
+      "highlights": "The Blue Whale of Catoosa, Buck Atom's Cosmic Curios",
+      "status": "completed"
+    },
+    {
+      "id": 6,
+      "date": "2025-06-10",
+      "location": "Oklahoma City",
+      "state": "OK",
+      "coordinates": {
+        "lat": 35.4676,
+        "lng": -97.5164
+      },
+      "distanceToNext": 215,
+      "highlights": "National Cowboy Museum, Milk Bottle Building",
+      "status": "current"
+    },
+    {
+      "id": 7,
+      "date": "2025-06-12",
+      "location": "Amarillo",
+      "state": "TX",
+      "coordinates": {
+        "lat": 35.222,
+        "lng": -101.8313
+      },
+      "distanceToNext": 114,
+      "highlights": "Cadillac Ranch, Big Texan Steak Ranch",
+      "status": "upcoming"
+    },
+    {
+      "id": 8,
+      "date": "2025-06-14",
+      "location": "Tucumcari",
+      "state": "NM",
+      "coordinates": {
+        "lat": 35.1717,
+        "lng": -103.725
+      },
+      "distanceToNext": 174,
+      "highlights": "Blue Swallow Motel, Route 66 Museum",
+      "status": "upcoming"
+    },
+    {
+      "id": 9,
+      "date": "2025-06-16",
+      "location": "Albuquerque",
+      "state": "NM",
+      "coordinates": {
+        "lat": 35.0844,
+        "lng": -106.6504
+      },
+      "distanceToNext": 317,
+      "highlights": "Old Town, Route 66 Diner",
+      "status": "upcoming"
+    },
+    {
+      "id": 10,
+      "date": "2025-06-19",
+      "location": "Flagstaff",
+      "state": "AZ",
+      "coordinates": {
+        "lat": 35.1983,
+        "lng": -111.6513
+      },
+      "distanceToNext": 248,
+      "highlights": "Lowell Observatory, Museum Club",
+      "status": "upcoming"
+    },
+    {
+      "id": 11,
+      "date": "2025-06-21",
+      "location": "Kingman",
+      "state": "AZ",
+      "coordinates": {
+        "lat": 35.1894,
+        "lng": -114.053
+      },
+      "distanceToNext": 155,
+      "highlights": "Powerhouse Visitor Center, Arizona Route 66 Museum",
+      "status": "upcoming"
+    },
+    {
+      "id": 12,
+      "date": "2025-06-23",
+      "location": "Barstow",
+      "state": "CA",
+      "coordinates": {
+        "lat": 34.8958,
+        "lng": -117.0173
+      },
+      "distanceToNext": 115,
+      "highlights": "Route 66 Mother Road Museum, Barstow Station",
+      "status": "upcoming"
+    },
+    {
+      "id": 13,
+      "date": "2025-06-25",
+      "location": "San Bernardino",
+      "state": "CA",
+      "coordinates": {
+        "lat": 34.1083,
+        "lng": -117.2898
+      },
+      "distanceToNext": 65,
+      "highlights": "Original McDonald's Site and Museum, Wigwam Motel",
+      "status": "upcoming"
+    },
+    {
+      "id": 14,
+      "date": "2025-06-26",
+      "location": "Santa Monica",
+      "state": "CA",
+      "coordinates": {
+        "lat": 34.0195,
+        "lng": -118.4912
+      },
+      "distanceToNext": 0,
+      "highlights": "Santa Monica Pier, End of Route 66 sign",
+      "status": "upcoming"
+    }
+  ],
+  "entries": [
+    {
+      "id": 1,
+      "title": "Beginning the Journey in Chicago",
+      "date": "2025-06-01",
+      "content": "Today marks the start of my Route 66 adventure! Standing at the official starting point at Adams Street and Michigan Avenue, I felt a sense of excitement and anticipation for the journey ahead. I visited the Route 66 Begin sign and took the obligatory photo. The weather was perfect - sunny and warm with a gentle breeze from Lake Michigan.",
+      "location": {
+        "city": "Chicago",
+        "state": "IL",
+        "coordinates": {
+          "lat": 41.8781,
+          "lng": -87.6298
+        }
+      },
+      "tags": ["starting point", "chicago", "illinois", "day 1"],
+      "image": "https://images.unsplash.com/photo-1494522358652-f30e61a60313?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80"
+    },
+    {
+      "id": 2,
+      "title": "Lou Mitchell's and Pontiac",
+      "date": "2025-06-01",
+      "content": "Had breakfast at the famous Lou Mitchell's Restaurant - they really do give you donut holes and Milk Duds when you arrive! Afterward, I drove to Pontiac to visit the Route 66 Hall of Fame & Museum. The collection of memorabilia and old signs was fascinating, like stepping back in time. I especially loved the painted murals throughout the town.",
+      "location": {
+        "city": "Pontiac",
+        "state": "IL",
+        "coordinates": {
+          "lat": 40.8806,
+          "lng": -88.6298
+        }
+      },
+      "tags": ["food", "museum", "illinois", "murals"],
+      "image": "https://images.unsplash.com/photo-1516738901171-8eb4fc13bd20?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80"
+    },
+    {
+      "id": 3,
+      "title": "Springfield: Lincoln and Route 66",
+      "date": "2025-06-02",
+      "content": "Springfield is such an interesting mix of Route 66 nostalgia and Abraham Lincoln history. Visited the Abraham Lincoln Presidential Library and Museum in the morning - the exhibits were incredibly well done. In the afternoon, I explored the Route 66 attractions, including the Cozy Dog Drive In, home of the original corn dog on a stick. Tried their famous 'cozy dog' and it lived up to the hype!",
+      "location": {
+        "city": "Springfield",
+        "state": "IL",
+        "coordinates": {
+          "lat": 39.7817,
+          "lng": -89.6501
+        }
+      },
+      "tags": ["lincoln", "history", "food", "illinois"],
+      "image": "https://images.unsplash.com/photo-1543922911-5a10762c9fc3?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80"
+    },
+    {
+      "id": 4,
+      "title": "Chain of Rocks Bridge",
+      "date": "2025-06-03",
+      "content": "Before heading into St. Louis, I stopped at the historic Chain of Rocks Bridge that spans the Mississippi River. Now only open to pedestrians and cyclists, this mile-long bridge with its 30-degree bend in the middle offered spectacular views of the river. I walked the entire length, imagining the travelers who crossed it decades ago when it was part of Route 66.",
+      "location": {
+        "city": "Madison",
+        "state": "IL",
+        "coordinates": {
+          "lat": 38.7573,
+          "lng": -90.178
+        }
+      },
+      "tags": ["bridge", "mississippi river", "illinois", "historic"],
+      "image": "https://images.unsplash.com/photo-1534531173927-aeb928df0c81?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80"
+    },
+    {
+      "id": 5,
+      "title": "St. Louis and the Gateway Arch",
+      "date": "2025-06-04",
+      "content": "Spent the day exploring St. Louis, starting with the iconic Gateway Arch. The tram ride to the top was a bit cramped but worth it for the incredible views of the city and the Mississippi River. Later, I visited Ted Drewes Frozen Custard, a Route 66 institution since 1929. Their 'concrete' shakes are so thick you can turn them upside down - and yes, I tested this and can confirm it's true!",
+      "location": {
+        "city": "St. Louis",
+        "state": "MO",
+        "coordinates": {
+          "lat": 38.627,
+          "lng": -90.1994
+        }
+      },
+      "tags": ["gateway arch", "missouri", "food", "ice cream"],
+      "image": "https://images.unsplash.com/photo-1501185414752-21f28654fcc3?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80"
+    },
+    {
+      "id": 6,
+      "title": "Cuba's Murals and Fanning Outpost",
+      "date": "2025-06-05",
+      "content": "Drove through the rolling hills of the Missouri Ozarks today. Stopped in Cuba, known as 'Mural City,' to see the impressive Route 66 murals painted on buildings throughout the town. Each one tells a story of the town's history or the Mother Road. Later, I visited the Fanning Outpost to see the world's second-largest rocking chair - it's 42 feet tall! I took photos but declined the opportunity to try and climb it.",
+      "location": {
+        "city": "Cuba",
+        "state": "MO",
+        "coordinates": {
+          "lat": 38.0631,
+          "lng": -91.4032
+        }
+      },
+      "tags": ["murals", "art", "missouri", "roadside attraction"],
+      "image": "https://images.unsplash.com/photo-1622414661589-2be247312241?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80"
+    },
+    {
+      "id": 7,
+      "title": "Springfield and Fantastic Caverns",
+      "date": "2025-06-06",
+      "content": "Arrived in Springfield, Missouri today. The highlight was definitely Fantastic Caverns, America's only completely ride-through cave tour. The jeep-drawn tram took us through massive underground rooms with stunning formations. What makes this extra special for Route 66 travelers is that the cave was discovered by a farmer following his dog in 1862, but later became a speakeasy during Prohibition and even hosted concerts in the 1950s through 1970s!",
+      "location": {
+        "city": "Springfield",
+        "state": "MO",
+        "coordinates": {
+          "lat": 37.209,
+          "lng": -93.2923
+        }
+      },
+      "tags": ["caves", "missouri", "natural wonder", "tours"],
+      "image": "https://images.unsplash.com/photo-1582750294500-bae79607dfc9?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80"
+    },
+    {
+      "id": 8,
+      "title": "The Blue Whale of Catoosa",
+      "date": "2025-06-08",
+      "content": "Today I visited one of the most charming and quirky attractions on Route 66 - the Blue Whale of Catoosa! This 80-foot long smiling blue whale was built in the early 1970s as an anniversary gift (talk about a unique present!) and became a popular swimming hole. Though swimming is no longer allowed, walking through the whale's body and climbing up to his head was such a fun experience. I could almost feel the joy of all the families who had visited here over the decades.",
+      "location": {
+        "city": "Catoosa",
+        "state": "OK",
+        "coordinates": {
+          "lat": 36.1719,
+          "lng": -95.7522
+        }
+      },
+      "tags": ["blue whale", "roadside attraction", "oklahoma", "quirky"],
+      "image": "https://images.unsplash.com/photo-1515889407308-3a8c20ae0842?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80"
+    },
+    {
+      "id": 9,
+      "title": "Urban Route 66 in Tulsa",
+      "date": "2025-06-09",
+      "content": "Explored Tulsa today, which has one of the longest stretches of original Route 66 running through an urban area. I loved seeing the neon signs along 11th Street, especially at night when they're all lit up. Visited Buck Atom's Cosmic Curios, a newer Route 66 attraction featuring a 21-foot tall space cowboy muffler man statue. The owner was incredibly knowledgeable about Route 66 history and gave me some great tips for the road ahead.",
+      "location": {
+        "city": "Tulsa",
+        "state": "OK",
+        "coordinates": {
+          "lat": 36.154,
+          "lng": -95.9928
+        }
+      },
+      "tags": ["tulsa", "oklahoma", "urban", "neon signs"],
+      "image": "https://images.unsplash.com/photo-1622602675575-79cacb2cc147?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80"
+    },
+    {
+      "id": 10,
+      "title": "Milk Bottle Building & National Cowboy Museum",
+      "date": "2025-06-10",
+      "content": "Oklahoma City has been full of surprises! This morning I found the famous Milk Bottle Building - a tiny triangular building with a giant milk bottle on top. It's been a landmark since 1930, and the bottle has been painted with different dairy logos over the years. In the afternoon, I visited the National Cowboy & Western Heritage Museum, which wasn't on the original Route 66 but was absolutely worth the detour. The art collection and exhibits on cowboy culture were fascinating.",
+      "location": {
+        "city": "Oklahoma City",
+        "state": "OK",
+        "coordinates": {
+          "lat": 35.4676,
+          "lng": -97.5164
+        }
+      },
+      "tags": ["roadside attraction", "museum", "oklahoma", "architecture"],
+      "image": "https://images.unsplash.com/photo-1523867574998-1a336b6ded04?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80"
+    }
+  ]
+}

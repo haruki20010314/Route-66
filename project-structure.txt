@@ -1,0 +1,13 @@
+route66-journey/
+├── index.html                  # Homepage with journey status and diary
+├── itinerary.html              # Detailed itinerary page
+├── add-entry.html              # Form to add new diary entries
+├── css/
+│   └── styles.css              # Main stylesheet (existing but organized)
+├── js/
+│   ├── main.js                 # Core functionality
+│   ├── map.js                  # Google Maps integration
+│   ├── diary.js                # Diary entry management
+│   └── itinerary.js            # Itinerary display logic
+└── data/
+    └── travel-data.json        # JSON data moved from inline to external file

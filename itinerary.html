@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Route 66 Journey - Itinerary</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Montserrat:wght@700&family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
+  <link href="css/styles.css" rel="stylesheet">
+  <script>
+    const userLang = navigator.language || navigator.userLanguage;
+    document.documentElement.lang = userLang.startsWith('ja') ? 'ja' : 'en';
+  </script>
+</head>
+<body>
+  <header class="bg-white shadow-sm">
+    <div class="container mx-auto px-4 py-4">
+      <div class="flex justify-between items-center">
+        <h1 class="text-2xl font-heading text-primary">Route 66 <span class="text-secondary">Journey</span></h1>
+        <nav>
+          <ul class="flex space-x-6">
+            <li><a href="index.html" class="font-medium hover:text-primary">Home</a></li>
+            <li><a href="itinerary.html" class="font-medium hover:text-primary font-bold text-primary">Itinerary</a></li>
+            <li><a href="add-entry.html" class="font-medium hover:text-primary">Add Entry</a></li>
+          </ul>
+        </nav>
+      </div>
+    </div>
+  </header>
+
+  <main class="container mx-auto px-4 py-8">
+    <!-- Page Header -->
+    <section class="mb-8">
+      <h2 class="text-3xl font-heading mb-4">Complete Route 66 Itinerary</h2>
+      <p class="text-lg mb-6">
+        Follow the entire journey from Chicago to Santa Monica along the historic Route 66. 
+        This detailed itinerary shows all planned stops, with dates, distances, and highlights.
+      </p>
+    </section>
+
+    <!-- Itinerary Map View -->
+    <div class="card mb-8">
+      <div class="card-header flex justify-between items-center">
+        <h3 class="text-xl font-heading">Route 66 Map Overview</h3>
+        <button id="toggle-map-settings" class="text-primary">
+          <i class="ri-settings-3-line"></i>
+        </button>
+      </div>
+      <div id="map-settings" class="p-4 border-b border-gray" style="display: none;">
+        <div class="mb-4">
+          <label for="api-key-input" class="block text-sm font-medium mb-1">Google Maps API Key:</label>
+          <div class="flex gap-2">
+            <input type="text" id="api-key-input" placeholder="Enter your Google Maps API Key" 
+              class="flex-1 px-4 py-2 border border-gray rounded-lg text-sm">
+            <button id="save-api-key" class="bg-primary text-white px-4 py-2 rounded-lg font-semibold text-sm">Save</button>
+          </div>
+          <p class="text-xs text-gray-dark mt-1">Your API key is stored locally on your device only.</p>
+        </div>
+      </div>
+      <div class="card-body p-0">
+        <div id="map" class="h-96 bg-gray-100">
+          <!-- Google Map will be loaded here -->
+          <div class="flex items-center justify-center h-full text-gray-dark">
+            <p id="map-placeholder">Loading map... If the map doesn't appear, you may need to set your Google Maps API key.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Journey Progress -->
+    <div class="card mb-8">
+      <div class="card-header">
+        <h3 class="text-xl font-heading">Journey Progress</h3>
+      </div>
+      <div class="card-body">
+        <div class="mb-6">
+          <div class="flex justify-between mb-2">
+            <span class="font-medium">Chicago, IL</span>
+            <span class="font-medium">Santa Monica, CA</span>
+          </div>
+          <div class="progress-bar">
+            <div class="progress-value" id="journey-progress" style="width: 0%;"></div>
+          </div>
+          <div class="flex justify-between mt-2">
+            <span class="text-sm text-gray-dark">Start: June 1, 2025</span>
+            <span class="text-sm font-medium" id="progress-percentage">0% Complete</span>
+            <span class="text-sm text-gray-dark">End: June 26, 2025</span>
+          </div>
+        </div>
+        <div class="flex flex-wrap gap-4 justify-center">
+          <div class="text-center">
+            <div class="text-2xl font-bold text-primary" id="total-distance">--</div>
+            <div class="text-sm text-gray-dark">Total Miles</div>
+          </div>
+          <div class="text-center">
+            <div class="text-2xl font-bold text-primary" id="days-count">--</div>
+            <div class="text-sm text-gray-dark">Total Days</div>
+          </div>
+          <div class="text-center">
+            <div class="text-2xl font-bold text-primary" id="states-count">--</div>
+            <div class="text-sm text-gray-dark">States Crossed</div>
+          </div>
+          <div class="text-center">
+            <div class="text-2xl font-bold text-primary" id="stops-count">--</div>
+            <div class="text-sm text-gray-dark">Planned Stops</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Detailed Itinerary Table -->
+    <div class="card mb-8">
+      <div class="card-header">
+        <h3 class="text-xl font-heading">Detailed Itinerary</h3>
+      </div>
+      <div class="card-body">
+        <div class="overflow-x-auto">
+          <table class="min-w-full">
+            <thead>
+              <tr class="border-b border-gray">
+                <th class="py-2 px-3 text-left font-heading">Day</th>
+                <th class="py-2 px-3 text-left font-heading">Date</th>
+                <th class="py-2 px-3 text-left font-heading">Location</th>
+                <th class="py-2 px-3 text-left font-heading">Distance</th>
+                <th class="py-2 px-3 text-left font-heading">Highlights</th>
+                <th class="py-2 px-3 text-left font-heading">Status</th>
+              </tr>
+            </thead>
+            <tbody id="detailed-itinerary">
+              <tr>
+                <td colspan="6" class="py-4 text-center text-gray-dark">Loading itinerary details...</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <!-- State by State Breakdown -->
+    <div class="card">
+      <div class="card-header">
+        <h3 class="text-xl font-heading">State by State Breakdown</h3>
+      </div>
+      <div class="card-body">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4" id="state-breakdown">
+          <!-- Will be populated with JavaScript -->
+          <div class="py-4 text-center text-gray-dark">Loading state data...</div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer class="bg-gray-800 text-white py-8 mt-8">
+    <div class="container mx-auto px-4">
+      <div class="flex flex-col md:flex-row justify-between items-center">
+        <div class="mb-4 md:mb-0">
+          <h2 class="text-xl font-heading mb-2">Route 66 <span class="text-primary">Journey</span></h2>
+          <p class="text-gray-400">© 2025 · All rights reserved</p>
+        </div>
+        <div>
+          <ul class="flex space-x-4">
+            <li><a href="#" class="hover:text-primary"><i class="ri-instagram-line text-xl"></i></a></li>
+            <li><a href="#" class="hover:text-primary"><i class="ri-twitter-x-line text-xl"></i></a></li>
+            <li><a href="#" class="hover:text-primary"><i class="ri-youtube-line text-xl"></i></a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Load JavaScript -->
+  <script src="js/main.js"></script>
+  <script src="js/map.js"></script>
+  <script src="js/itinerary.js"></script>
+</body>
+</html>

@@ -1,0 +1,52 @@
+# System files
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Dependency directories
+node_modules/
+jspm_packages/
+
+# Distribution directories
+dist/
+build/
+
+# Cache directories
+.npm
+.eslintcache
+.cache
+
+# Optional REPL history
+.node_repl_history
+
+# Output of 'npm pack'
+*.tgz
+
+# dotenv environment variable files
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# Editor config files
+.editorconfig
+
+# Temporary files
+*.tmp
+*.bak
+*.swp
+
+# Local API keys and secrets
+apikeys.js
+secrets.json

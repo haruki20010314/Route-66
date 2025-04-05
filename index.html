@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Route 66 Journey</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Montserrat:wght@700&family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
+  <link href="css/styles.css" rel="stylesheet">
+  <script>
+    // Check user's browser language
+    const userLang = navigator.language || navigator.userLanguage;
+    document.documentElement.lang = userLang.startsWith('ja') ? 'ja' : 'en';
+  </script>
+</head>
+<body>
+  <header class="bg-white shadow-sm">
+    <div class="container mx-auto px-4 py-4">
+      <div class="flex justify-between items-center">
+        <h1 class="text-2xl font-heading text-primary">Route 66 <span class="text-secondary">Journey</span></h1>
+        <nav>
+          <ul class="flex space-x-6">
+            <li><a href="index.html" class="font-medium hover:text-primary">Home</a></li>
+            <li><a href="itinerary.html" class="font-medium hover:text-primary">Itinerary</a></li>
+            <li><a href="add-entry.html" class="font-medium hover:text-primary">Add Entry</a></li>
+          </ul>
+        </nav>
+      </div>
+    </div>
+  </header>
+
+  <main class="container mx-auto px-4 py-8">
+    <!-- Hero Banner -->
+    <section class="mb-12 bg-gradient-to-r from-primary to-secondary rounded-lg overflow-hidden shadow-lg">
+      <div class="p-8 md:p-12 text-white">
+        <h2 class="text-3xl md:text-4xl font-heading mb-4">My Route 66 Adventure</h2>
+        <p class="text-lg mb-6 max-w-2xl">Follow my journey along the historic Route 66, the Mother Road of America, from Chicago to Santa Monica. Exploring small towns, roadside attractions, and the spirit of American travel.</p>
+        <a href="#journey-status" class="inline-block bg-white text-primary px-6 py-3 rounded-full font-bold hover:bg-gray-100 transition">Track My Journey</a>
+      </div>
+    </section>
+
+    <!-- Main Content: Two-column Layout -->
+    <div id="journey-status" class="two-column-grid mb-12">
+      <!-- Left Column: Travel Diary -->
+      <div>
+        <div class="card mb-8">
+          <div class="card-header">
+            <h3 class="text-xl font-heading">Journey Status</h3>
+          </div>
+          <div class="card-body">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
+              <div class="bg-gray-100 p-4 rounded-lg text-center">
+                <p class="text-sm text-gray-dark mb-1">Days on the Road</p>
+                <p class="text-2xl font-bold text-primary" id="days-count">--</p>
+              </div>
+              <div class="bg-gray-100 p-4 rounded-lg text-center">
+                <p class="text-sm text-gray-dark mb-1">Locations Visited</p>
+                <p class="text-2xl font-bold text-primary" id="locations-count">--</p>
+              </div>
+              <div class="bg-gray-100 p-4 rounded-lg text-center">
+                <p class="text-sm text-gray-dark mb-1">Miles Traveled</p>
+                <p class="text-2xl font-bold text-primary" id="miles-count">--</p>
+              </div>
+            </div>
+            <div class="mb-6">
+              <div class="flex justify-between mb-2">
+                <span class="font-medium">Chicago, IL</span>
+                <span class="font-medium">Santa Monica, CA</span>
+              </div>
+              <div class="progress-bar bg-gray-200 h-2 rounded-lg overflow-hidden">
+                <div class="progress-value bg-primary h-full" id="journey-progress" style="width: 0%;"></div>
+              </div>
+              <div class="flex justify-between mt-2">
+                <span class="text-sm text-gray-dark">Start</span>
+                <span class="text-sm font-medium" id="progress-percentage">0% Complete</span>
+                <span class="text-sm text-gray-dark">End</span>
+              </div>
+            </div>
+            <div>
+              <p class="mb-2 font-medium">Current Location:</p>
+              <div class="bg-blue-50 p-3 rounded-lg flex items-center">
+                <i class="ri-map-pin-line text-primary text-xl mr-2"></i>
+                <div>
+                  <p class="font-bold" id="current-location">Loading...</p>
+                  <p class="text-sm text-gray-dark" id="current-status">
+                    <span id="distance-from-start">-- miles from start</span> • 
+                    <span id="distance-to-end">-- miles to end</span>
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="card" id="diary">
+          <div class="card-header flex justify-between items-center">
+            <h3 class="text-xl font-heading">Travel Diary</h3>
+            <a href="add-entry.html" class="inline-flex items-center text-primary font-semibold">
+              <i class="ri-add-line mr-1"></i>
+              <span>Add Entry</span>
+            </a>
+          </div>
+          <div class="card-body">
+            <div id="diary-entries" class="diary-container">
+              <!-- Diary entries will be dynamically inserted here -->
+            </div>
+          </div>
+          <div class="card-footer flex justify-center">
+            <button id="load-more-entries" class="text-primary font-semibold inline-flex items-center">
+              <span>Load more entries</span>
+              <i class="ri-arrow-down-line ml-1"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right Column: Map & Itinerary -->
+      <div>
+        <div class="card mb-8">
+          <div class="card-header flex justify-between items-center">
+            <h3 class="text-xl font-heading">Route 66 Map</h3>
+            <button id="toggle-map-settings" class="text-primary">
+              <i class="ri-settings-3-line"></i>
+            </button>
+          </div>
+          <div id="map-settings" class="p-4 border-b border-gray" style="display: none;">
+            <div class="mb-4">
+              <label for="api-key-input" class="block text-sm font-medium mb-1">Google Maps API Key:</label>
+              <div class="flex gap-2">
+                <input type="text" id="api-key-input" placeholder="Enter your Google Maps API Key" 
+                  class="flex-1 px-4 py-2 border border-gray rounded-lg text-sm">
+                <button id="save-api-key" class="bg-primary text-white px-4 py-2 rounded-lg font-semibold text-sm">Save</button>
+              </div>
+              <p class="text-xs text-gray-dark mt-1">Your API key is stored locally on your device only.</p>
+            </div>
+          </div>
+          <div class="card-body p-0">
+            <div id="map" class="bg-gray-100" style="height: 400px; width: 100%;"></div>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-header flex justify-between items-center">
+            <h3 class="text-xl font-heading">Route 66 Itinerary</h3>
+            <a href="itinerary.html" class="text-primary font-semibold inline-flex items-center">
+              <span>View full itinerary</span>
+              <i class="ri-arrow-right-line ml-1"></i>
+            </a>
+          </div>
+          <div class="card-body">
+            <div class="overflow-x-auto">
+              <table class="min-w-full">
+                <thead>
+                  <tr class="border-b border-gray">
+                    <th class="py-2 px-3 text-left font-heading">Date</th>
+                    <th class="py-2 px-3 text-left font-heading">Location</th>
+                    <th class="py-2 px-3 text-left font-heading">Status</th>
+                  </tr>
+                </thead>
+                <tbody id="itinerary-stops">
+                  <tr>
+                    <td colspan="3" class="py-4 text-center text-gray-dark">Loading itinerary...</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <div class="card-footer flex flex-col sm:flex-row justify-between gap-2 items-center">
+            <div class="text-center sm:text-left">
+              <span class="font-semibold">Total Route 66 distance:</span> <span id="total-distance">--</span> miles
+              <div class="text-sm text-gray-dark">Chicago to Santa Monica</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer class="bg-gray-800 text-white py-8">
+    <div class="container mx-auto px-4">
+      <div class="flex flex-col md:flex-row justify-between items-center">
+        <div class="mb-4 md:mb-0">
+          <h2 class="text-xl font-heading mb-2">Route 66 <span class="text-primary">Journey</span></h2>
+          <p class="text-gray-400">© 2025 · All rights reserved</p>
+        </div>
+        <div>
+          <ul class="flex space-x-4">
+            <li><a href="#" class="hover:text-primary"><i class="ri-instagram-line text-xl"></i></a></li>
+            <li><a href="#" class="hover:text-primary"><i class="ri-twitter-x-line text-xl"></i></a></li>
+            <li><a href="#" class="hover:text-primary"><i class="ri-youtube-line text-xl"></i></a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Load JavaScript -->
+  <script src="js/main.js"></script>
+  <script src="js/map.js"></script>
+  <script src="js/diary.js"></script>
+  <script src="js/itinerary.js"></script>
+  <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBv2x_NMV1Tlyse0KaaImwSj874s58tPAM&callback=initMap"></script>
+  <script>
+    function initMap() {
+      const route66Start = { lat: 41.8781, lng: -87.6298 }; // Chicago, IL
+      const map = new google.maps.Map(document.getElementById("map"), {
+        zoom: 4,
+        center: route66Start,
+      });
+
+      // Add a marker for the starting point
+      new google.maps.Marker({
+        position: route66Start,
+        map: map,
+        title: "Route 66 Start - Chicago, IL",
+      });
+    }
+  </script>
+</body>
+</html>
